@@ -22,8 +22,8 @@ export const FilmsList: FunctionalComponent<{ films: Film[] }> = (props) => {
 
     if (
       color.value !== "any" &&
-      ((color.value === "true" && film.color) ||
-        (color.value === "false" && !film.color))
+      ((color.value === "true" && !film.color) ||
+        (color.value === "false" && film.color))
     ) {
       return false;
     }
