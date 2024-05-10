@@ -29,7 +29,7 @@ export const handler: Handlers = {
 
 export default function Home(props: PageProps) {
   return (
-    <div>
+    <div class="main-display-index">
       <Searchbar filters={props.data.filters} />
       <FilmsList films={props.data.films} />
     </div>

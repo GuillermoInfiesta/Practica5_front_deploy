@@ -128,30 +128,52 @@ html {
   font-variant-numeric: tabular-nums;
 }
 
+.main-display-index{
+  width: 100%;
+  background-image: url("https://static.vecteezy.com/system/resources/previews/006/065/333/non_2x/a-seamless-hexagons-pattern-vector.jpg");
+}
+
 .search-bar{
   position: sticky;
   inset: 0rem;
-  width: 100%;
+  width: 95%;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
   border: 2px solid black;
-  border-radius: 10px;
-  background-color: gray;
-  padding: 1rem;
+  border-radius: 50px;
+  background-color: rgb(255, 255, 255);
   justify-content: space-between;
+  z-index: 5;
   *{
     min-width: 15%;
   }
   .search-box{
     display: flex;
     flex-direction: column;
+    label{
+      font-size: small;
+      color: gray;
+    }
+    input, select{
+      border-radius: 8px;
+    }
+    input:focus,select:focus{
+      outline: none;
+    }
+
   }
 }
 
 .film-list{
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
+  width: 90%;
+  margin: auto;
   
 }
 .film-resumed{
@@ -159,29 +181,92 @@ html {
   padding: 1rem;
   border: solid 2px black;
   border-radius: 10px;
-  max-width: 400px;
-  max-height: 200px;
+  width: 240px;
+  height: 300px;
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   align-content: center;
   justify-content: center;
   text-align: center;
   justify-items: center;
-  background-color: #e0e0e0;
+  background-color: #ffffff;
   box-shadow: 0 0 10px rgb(100,100,100);
 
   .profile{
-    width: 30%;
+    padding: 0.5rem;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.509);
     img{
-      width: 100px;
-      height: 100px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 150px;
+      height: 150px;
+      margin-bottom: 0.5rem;
     }
   }
 
   .details{
-    width: 70%;
-      overflow-y: scroll;
-
+    width: 90%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    .color-circle, .bw-circle{
+      border-radius: 50%;
+      height: 30px;
+      width: 30px;
+      background: linear-gradient(to bottom left, rgb(255, 0, 0), rgb(0, 98, 255));
+    }
+    .bw-circle{
+      background: linear-gradient(to bottom left, rgb(255, 255, 255), rgb(0, 0, 0));
+    }
   }
 
+}
+
+.film-page{
+  width: 100%;
+  display: flex;
+  .film-image{
+    padding: 2rem;
+    border-right: 2px solid rgba(182, 182, 182, 0.42);
+    width: 50%;
+    img{
+      width: 100%;
+      aspect-ratio: 1;
+    }
+  }
+  .film-data{
+    width: 50%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    .title{
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+      border-bottom:  2px solid rgba(182, 182, 182, 0.42);
+      h2{
+        font-size: xx-large;
+        font-weight: 600;
+      }
+      h4{
+        font-size: large;
+        font-weight: 400;
+      }
+    }
+    .details{
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      .info{
+        label{
+          font-size:large;
+          font-weight: lighter;
+        }
+        p{
+          font-size: larger;
+
+        }
+      }
+    }
+  }
 }

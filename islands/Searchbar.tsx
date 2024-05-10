@@ -3,11 +3,11 @@ import { Filters } from "../Types.ts";
 import { brand, color, f_120, f_35, iso, name } from "../Signals.ts";
 
 export const Searchbar: FunctionComponent<{ filters: Filters }> = (props) => {
-  console.log(props);
+  //console.log(props);
   return (
     <div class="search-bar">
       <div class="search-box">
-        <span>Brand</span>
+        <label>Brand</label>
         <select
           value={"any"}
           onInput={(e) => {
@@ -18,7 +18,7 @@ export const Searchbar: FunctionComponent<{ filters: Filters }> = (props) => {
         </select>
       </div>
       <div class="search-box">
-        <span>ISO</span>
+        <label>ISO</label>
         <select
           value={"any"}
           onInput={(e) => {
@@ -28,17 +28,17 @@ export const Searchbar: FunctionComponent<{ filters: Filters }> = (props) => {
           {props.filters.ISO.map((iso) => <option>{iso}</option>)}
         </select>
       </div>
-      <div class="search-box">
-        <span>Format</span>
+      <div class="search-box check-box">
+        <label>Format</label>
         <div>
-          <span>35</span>
+          <span>35mm</span>
           <input
             type="checkbox"
             onChange={(e) => {
               f_35.value = e.currentTarget.checked;
             }}
           />
-          <span>120</span>
+          <span>120mm</span>
           <input
             type="checkbox"
             onChange={(e) => {
@@ -48,7 +48,7 @@ export const Searchbar: FunctionComponent<{ filters: Filters }> = (props) => {
         </div>
       </div>
       <div class="search-box">
-        <span>Color</span>
+        <label>Color</label>
         <select
           value={"any"}
           onInput={(e) => {
@@ -57,11 +57,11 @@ export const Searchbar: FunctionComponent<{ filters: Filters }> = (props) => {
         >
           <option value="true">On color</option>
           <option value="false">Black and white</option>
-          <option value="any">Any</option>
+          <option value="any">any</option>
         </select>
       </div>
       <div class="search-box">
-        <span>Name</span>
+        <label>Name</label>
         <input
           onInput={(e) => {
             name.value = e.currentTarget.value;

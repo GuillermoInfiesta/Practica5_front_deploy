@@ -6,9 +6,12 @@ export const FilmResumed: FunctionalComponent<{ film: Film }> = (props) => {
       <div class="profile">
         <img src={props.film.staticImageUrl} />
         <h4>{props.film.name}</h4>
+        <h6>{props.film.brand}</h6>
       </div>
       <div class="details">
-        <span>{props.film.description}</span>
+        {(props.film.color && <div class="color-circle"></div>) || (
+          <div class="bw-circle"></div>
+        )}
       </div>
     </div>
   );
