@@ -40,7 +40,7 @@ export const DeleteProjectModal: FunctionComponent<{ projects: Project[] }> = (
             ))}
           </select>
           <input
-            placeholder={"Enter the name of the project"}
+            placeholder={`Type "${project}" to confirm`}
             onInput={(e) => {
               if (e.currentTarget.value === project) {
                 setValid(true);

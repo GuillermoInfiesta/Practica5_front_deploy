@@ -5,7 +5,7 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
   props,
 ) => {
   const [project, setProject] = useState<string>("");
-  const [valid, setValid] = useState<boolean>(false);
+  const [film, setFilm] = useState<string>("");
 
   const show_modal = () => {
     const mod = document.getElementById("rem-modal");
@@ -27,8 +27,8 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
           }
         }}
       >
-        <div>
-          <h2>Remove a Project</h2>
+        <div class="rem-films">
+          <h2>Remove Films</h2>
           <span>Select the project</span>
           <select
             value={project}
@@ -40,17 +40,17 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
               <option value={pr.project}>{pr.project}</option>
             ))}
           </select>
-          <input
-            placeholder={"Enter the name of the project"}
+          <select
+            value={film}
             onInput={(e) => {
-              if (e.currentTarget.value === project) {
-                setValid(true);
-              } else {
-                setValid(false);
-              }
+              setFilm(e.currentTarget.value);
             }}
-          />
-          <button disabled={!valid} onClick={delete_project}>Delete</button>
+          >
+            {props.projects.find((p) => p.project === project)?.films.map(
+              (f) => <option value={f._id}>{f.name}</option>,
+            )}
+          </select>
+          <button onClick={delete_project}>Delete</button>
         </div>
       </div>
     </div>
