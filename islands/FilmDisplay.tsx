@@ -1,8 +1,17 @@
 import { FunctionComponent } from "preact";
 import { Film } from "../Types.ts";
+import { AddFilmModal } from "./AddFilmModal.tsx";
 
-export const FilmDisplay: FunctionComponent<{ data: Film }> = (props) => {
-  console.log(props.data);
+export const FilmDisplay: FunctionComponent<
+  { data: Film; cookies: { project: string; film_ids: string[] }[] }
+> = (
+  props,
+) => {
+  const showModal = () => {
+    const mod = document.getElementById("add-modal");
+    mod.style.display = "block";
+  };
+
   return (
     <div class="film-page">
       <div class="film-image">
@@ -15,6 +24,7 @@ export const FilmDisplay: FunctionComponent<{ data: Film }> = (props) => {
         <div class="title">
           <h2>{props.data.name}</h2>
           <h4>{props.data.brand}</h4>
+          <button onClick={showModal}>Add to project</button>
         </div>
         <div class="details">
           <div class="info">
@@ -42,10 +52,14 @@ export const FilmDisplay: FunctionComponent<{ data: Film }> = (props) => {
           </div>
           <div class="info">
             <label>Features</label>
-            {props.data.keyFeatures.map((ft) => <p>{ft.feature}</p>)}
+            <div class="features">
+              {props.data.keyFeatures.map((ft) => <p class="ft">{ft.feature}
+              </p>)}
+            </div>
           </div>
         </div>
       </div>
+      <AddFilmModal projects={props.cookies} film_id={props.data._id} />
     </div>
   );
 };

@@ -23,3 +23,8 @@ export type Filters = {
   brands: string[];
   ISO: string[];
 };
+
+export type Project = {
+  project: string;
+  films: Film[];
+};

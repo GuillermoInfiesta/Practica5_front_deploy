@@ -8,7 +8,7 @@ export const FilmsList: FunctionalComponent<{ films: Film[] }> = (props) => {
   const filteredFilms = props.films.filter((film) => {
     if (brand.value !== "any" && film.brand !== brand.value) return false;
 
-    console.log(parseInt(iso.value));
+    //console.log(parseInt(iso.value));
     if (iso.value !== "any" && film.iso.toString() !== iso.value) {
       return false;
     }
