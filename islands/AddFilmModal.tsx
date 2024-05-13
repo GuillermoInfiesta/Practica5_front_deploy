@@ -64,12 +64,15 @@ export const AddFilmModal: FunctionComponent<
                   setExistingProject(e.currentTarget.value);
                 }}
               >
-                {/*Poner filter para mostrar solo los disponibles*/ props
-                  .projects
+                {props.projects.filter((pr) =>
+                  pr.film_ids.indexOf(props.film_id) === -1
+                )
                   .map((pr) => <option value={pr.project}>{pr.project}
                   </option>)}
               </select>
-              <button onClick={add}>Add</button>
+              <button disabled={existingProject === ""} onClick={add}>
+                Add
+              </button>
             </div>
           </div>
           <div class="input-box">
@@ -82,7 +85,12 @@ export const AddFilmModal: FunctionComponent<
                   setNewProject(e.currentTarget.value);
                 }}
               />
-              <button onClick={create_add}>Create + add</button>
+              <button
+                disabled={newProject === "" || newProject.indexOf(" ") !== -1}
+                onClick={create_add}
+              >
+                Create + add
+              </button>
             </div>
           </div>
         </div>

@@ -34,7 +34,7 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
   };
   return (
     <div>
-      <button onClick={show_modal}>Edit Project</button>
+      <button onClick={show_modal}>Remove Film</button>
       <div
         id="rem-modal"
         class="modal"

@@ -6,10 +6,13 @@ import { ProjectsPage } from "../components/ProjectsPage.tsx";
 export const handler: Handlers = {
   GET: async (req: Request, ctx: FreshContext<unknown>) => {
     const cookies = getCookies(req.headers);
+    if (!cookies.projects) {
+      return ctx.render({ projects_info: [] });
+    }
     const projects = JSON.parse(decodeURIComponent(cookies.projects));
 
-    if (projects === null) {
-      return ctx.render(null);
+    if (projects.length === 0) {
+      return ctx.render({ projects_info: [] });
     }
 
     const res = await fetch("https://filmapi.vercel.app/api/films");

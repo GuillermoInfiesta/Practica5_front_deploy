@@ -6,11 +6,21 @@ import { RemoveFilmsModal } from "../islands/RemoveFilmsModal.tsx";
 export const ProjectsPage: FunctionComponent<{ projects: Project[] }> = (
   props,
 ) => {
-  console.log(props.projects);
+  //console.log(props.projects);
   return (
     <div class="projects-page">
       <div class="projects-resume">
-        <h2>Projects</h2>
+        <div class="head">
+          <h2>Projects</h2>
+          <div class="flex gap-05-rem">
+            {props.projects.length !== 0 && (
+              <DeleteProjectModal projects={props.projects} />
+            )}
+            {props.projects.length !== 0 && (
+              <RemoveFilmsModal projects={props.projects} />
+            )}
+          </div>
+        </div>
         <div class="flex flex-col">
           {props.projects.map((p: Project) => (
             <a href={`#${p.project}`}>{p.project}</a>
@@ -18,8 +28,6 @@ export const ProjectsPage: FunctionComponent<{ projects: Project[] }> = (
         </div>
       </div>
       <div class="projects-details">
-        <DeleteProjectModal projects={props.projects} />
-        <RemoveFilmsModal projects={props.projects} />
         {props.projects.map((p: Project) => (
           <div id={p.project} class="project-display">
             <div class="project-title">
