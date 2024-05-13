@@ -10,6 +10,7 @@
 button {
   border-radius: 4px;
   color: inherit;
+  background-color: rgb(152, 202, 222);
 }
 button, [role="button"] {
   cursor: pointer;
