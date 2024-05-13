@@ -52,6 +52,7 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
             value={project}
             onInput={(e) => {
               setProject(e.currentTarget.value);
+              setFilm("");
             }}
           >
             {props.projects.map((pr) => (
@@ -68,7 +69,7 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
               (f) => <option value={f._id}>{f.name}</option>,
             )}
           </select>
-          <button onClick={remove_film}>Delete</button>
+          <button disabled={film === ""} onClick={remove_film}>Delete</button>
         </div>
       </div>
     </div>

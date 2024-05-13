@@ -42,8 +42,10 @@ export const DeleteProjectModal: FunctionComponent<{ projects: Project[] }> = (
         }}
       >
         <div class="delete-project">
-          <h2>Remove a Project</h2>
-          <span>Select the project</span>
+          <h2>Delete a Project</h2>
+          <span>
+            Select the project and write its name to confirm you want to delete
+          </span>
           <select
             value={project}
             onInput={(e) => {

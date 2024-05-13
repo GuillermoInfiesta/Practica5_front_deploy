@@ -7,6 +7,7 @@ export const AddFilmModal: FunctionComponent<
 > = (props) => {
   const [existingProject, setExistingProject] = useState<string>("");
   const [newProject, setNewProject] = useState<string>("");
+  const [error, setError] = useState<string>("");
 
   const add = () => {
     const projects = props.projects;
@@ -14,11 +15,10 @@ export const AddFilmModal: FunctionComponent<
     const exists =
       project.film_ids.findIndex((p) => p === props.film_id) !== -1;
     if (exists) {
-      console.log("ya existe en la lista"); //Poner mensaje en pantalla
+      setError("Project already exists");
       return;
     }
     project.film_ids.push(props.film_id);
-    //console.log(projects);
     jscookie.set(
       "projects",
       JSON.stringify(projects),
@@ -30,7 +30,7 @@ export const AddFilmModal: FunctionComponent<
     const projects = props.projects;
     const project = projects.find((p) => p.project === newProject);
     if (project) {
-      console.log("El proyecto ya existe"); //Poner mensaje en pantalla
+      setError("Project already exists");
       return;
     }
     projects.push({ project: newProject, film_ids: [props.film_id] });
@@ -83,6 +83,7 @@ export const AddFilmModal: FunctionComponent<
                 type="text"
                 onInput={(e) => {
                   setNewProject(e.currentTarget.value);
+                  setError("");
                 }}
               />
               <button
@@ -95,6 +96,7 @@ export const AddFilmModal: FunctionComponent<
           </div>
         </div>
       </div>
+      {error !== "" && <div class="modal-error">{error}</div>}
     </div>
   );
 };
