@@ -22,8 +22,10 @@ export const FilmDisplay: FunctionComponent<
       </div>
       <div class="film-data">
         <div class="title">
-          <h2>{props.data.name}</h2>
-          <h4>{props.data.brand}</h4>
+          <div>
+            <h2>{props.data.name}</h2>
+            <h4>{props.data.brand}</h4>
+          </div>
           <button onClick={showModal}>Add to project</button>
         </div>
         <div class="details">

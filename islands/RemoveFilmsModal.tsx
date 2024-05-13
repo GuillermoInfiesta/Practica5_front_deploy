@@ -1,6 +1,7 @@
 import { FunctionComponent } from "preact";
 import { Project } from "../Types.ts";
 import { useState } from "preact/hooks";
+import jscookie from "npm:js-cookie@3.0.5";
 export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
   props,
 ) => {
@@ -12,7 +13,24 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
     mod.style.display = "block";
   };
 
-  const delete_project = () => {
+  const remove_film = () => {
+    console.log("estamos eliminando film");
+    console.log(props.projects);
+    const cookie = props.projects.map((p) => {
+      const film_ids = p.films.filter((f) =>
+        !(f._id === film && p.project === project)
+      ).map((f) => f._id);
+      return { project: p.project, film_ids: film_ids };
+    });
+    console.log(cookie);
+
+    jscookie.set(
+      "projects",
+      JSON.stringify(cookie),
+      { expires: 99999, path: "/" },
+    );
+
+    window.location.reload();
   };
   return (
     <div>
@@ -50,7 +68,7 @@ export const RemoveFilmsModal: FunctionComponent<{ projects: Project[] }> = (
               (f) => <option value={f._id}>{f.name}</option>,
             )}
           </select>
-          <button onClick={delete_project}>Delete</button>
+          <button onClick={remove_film}>Delete</button>
         </div>
       </div>
     </div>

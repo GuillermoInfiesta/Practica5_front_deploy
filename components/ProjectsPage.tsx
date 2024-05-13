@@ -24,18 +24,15 @@ export const ProjectsPage: FunctionComponent<{ projects: Project[] }> = (
           <div id={p.project} class="project-display">
             <div class="project-title">
               <h3>{p.project}</h3>
-              <div>
-                <button>Edit</button>
-                <button>Borrar</button>
-              </div>
             </div>
             <div class="project-films">
               {p.films.map((f) => (
-                <div class="flex">
+                <a href={`/film/${f._id}`} class="flex">
                   <img src={f.staticImageUrl} />
                   <h4>{f.name}</h4>
-                  <h6>{f.brand}</h6>
-                </div>
+                  <span>/</span>
+                  <h5>{f.brand}</h5>
+                </a>
               ))}
             </div>
           </div>

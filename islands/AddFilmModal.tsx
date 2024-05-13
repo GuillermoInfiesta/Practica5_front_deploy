@@ -14,11 +14,11 @@ export const AddFilmModal: FunctionComponent<
     const exists =
       project.film_ids.findIndex((p) => p === props.film_id) !== -1;
     if (exists) {
-      console.log("ya existe en la lista");
+      console.log("ya existe en la lista"); //Poner mensaje en pantalla
       return;
     }
     project.film_ids.push(props.film_id);
-    console.log(projects);
+    //console.log(projects);
     jscookie.set(
       "projects",
       JSON.stringify(projects),
@@ -30,7 +30,7 @@ export const AddFilmModal: FunctionComponent<
     const projects = props.projects;
     const project = projects.find((p) => p.project === newProject);
     if (project) {
-      console.log("El proyecto ya existe");
+      console.log("El proyecto ya existe"); //Poner mensaje en pantalla
       return;
     }
     projects.push({ project: newProject, film_ids: [props.film_id] });
@@ -54,29 +54,37 @@ export const AddFilmModal: FunctionComponent<
     >
       <div class="add-film">
         <h2>Add a film</h2>
-        <div>
-          <span>Add to an existing project</span>
-          <select
-            value={existingProject}
-            onInput={(e) => {
-              setExistingProject(e.currentTarget.value);
-            }}
-          >
-            {/*Poner filter para mostrar solo los disponibles*/ props.projects
-              .map((pr) => <option value={pr.project}>{pr.project}</option>)}
-          </select>
-          <button onClick={add}>Add</button>
-        </div>
-        <div>
-          <span>Add to new project</span>
-          <input
-            placeholder="Project name"
-            type="text"
-            onInput={(e) => {
-              setNewProject(e.currentTarget.value);
-            }}
-          />
-          <button onClick={create_add}>Create and add</button>
+        <div class="flex flex-col gap-8">
+          <div class="input-box">
+            <span>Add to an existing project</span>
+            <div class="a">
+              <select
+                value={existingProject}
+                onInput={(e) => {
+                  setExistingProject(e.currentTarget.value);
+                }}
+              >
+                {/*Poner filter para mostrar solo los disponibles*/ props
+                  .projects
+                  .map((pr) => <option value={pr.project}>{pr.project}
+                  </option>)}
+              </select>
+              <button onClick={add}>Add</button>
+            </div>
+          </div>
+          <div class="input-box">
+            <span>Add to new project</span>
+            <div class="a">
+              <input
+                placeholder="Project name"
+                type="text"
+                onInput={(e) => {
+                  setNewProject(e.currentTarget.value);
+                }}
+              />
+              <button onClick={create_add}>Create + add</button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
